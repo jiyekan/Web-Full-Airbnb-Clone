@@ -25,7 +25,16 @@ export default async function getCurrentUser() {
       return null;
     }
 
-    return currentUser;
+    // Date object is NOT supported to be passed from client component to server Component
+    // so we have to pass modified data instead of just passing currentUser
+    // 1. Use toISOString to pass the date object as a string
+    // 2. If it's optional variable, pass null if not exist
+    return {
+      ...currentUser,
+      createdAt: currentUser.createdAt.toISOString(),
+      updatedAt: currentUser.updatedAt.toISOString(),
+      emailVerified: currentUser.emailVerified?.toISOString() || null
+    };
   } catch (error: any) {
     return null;
   }
