@@ -7,7 +7,7 @@ import UserMenu from "./UserMenu"
 import { SafeUser } from "@/app/types";
 
 interface NavbarProps {
-    // instead of import User, using SafeUser with proper data type (Data => String)
+    // instead of import User, using SafeUser with proper data type (Date => String)
     currentUser?: SafeUser | null;
 }
 
